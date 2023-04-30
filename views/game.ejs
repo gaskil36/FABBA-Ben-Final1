@@ -1,0 +1,594 @@
+<!---added HTML doctype in a testing attempt, site still works fine and gives more structure to help test.-->
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <script>   
+      console.log("welcome to the game bruh")
+         var gameState = null
+         var score = 0
+         var outcome = null
+
+         function correct(optNum){
+         //Intro Loads by default.
+         //When a user makes a choice 
+
+         //Path 1-1-1(Lose)
+         if(optNum === 'opt1' && gameState === null){
+            //Askbar
+            document.getElementById("prompt1").innerHTML="<%= askbar1 %>";
+            document.getElementById("prompt2").innerHTML="<%= askbar2 %>";
+            document.getElementById("sceneText").innerHTML="<%= askbar %>";
+            document.getElementById("gameImage").src="https://www.oxpal.com/wp-content/uploads/2014/07/character_medieval_tavern_keeper_big.jpg";
+            gameState = "askbar";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+      }  else if(optNum === 'opt1' && gameState === "askbar") {
+            //LEAVETOWN
+            document.getElementById("prompt1").innerHTML="<%= leavetown1 %>";
+            document.getElementById("prompt2").innerHTML="<%= leavetown2 %>";
+            document.getElementById("sceneText").innerHTML="<%= leavetown %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/EYhSkXM.jpg";
+            gameState = "leavetown";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+      }  else if(optNum === 'opt1' && gameState === "leavetown") {
+            //FIGHTBANDITS
+            document.getElementById("prompt1").innerHTML="<%= fightbandits1 %>";
+            document.getElementById("prompt2").innerHTML="<%= fightbandits2 %>";
+            document.getElementById("sceneText").innerHTML="<%= fightbandits %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/EYhSkXM.jpg";
+            gameState = "fightbandits";
+            score-=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You lose! Your final score is " + score)
+            var outcome = "Lose"
+            gameData.push({score: score, outcome: outcome});
+      }     
+
+         //Path 1-1-2-1-1(Lose)
+         else if(optNum === 'opt2' && gameState === "leavetown") {
+            //REASONBANDITS
+            document.getElementById("prompt1").innerHTML="<%= reasonbandits1 %>";
+            document.getElementById("prompt2").innerHTML="<%= reasonbandits2 %>";
+            document.getElementById("sceneText").innerHTML="<%= reasonbandits %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/hUZyiHa.jpg";
+            gameState = "reasonbandits";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+      }  
+         else if(optNum === 'opt1' && gameState === "reasonbandits") {
+            //EXPLORERUINS
+            document.getElementById("prompt1").innerHTML="<%= exploreruins1 %>";
+            document.getElementById("prompt2").innerHTML="<%= exploreruins2 %>";
+            document.getElementById("sceneText").innerHTML="<%= exploreruins %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/yc3yxQU.jpg";
+            gameState = "exploreruins";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+      }  
+         else if(optNum === 'opt1' && gameState === "exploreruins") {
+            //FIGHTBANDITSRUINSFIRST
+            document.getElementById("prompt1").innerHTML="<%= fightBanditsRuinsFirst1 %>";
+            document.getElementById("prompt2").innerHTML="<%= fightBanditsRuinsFirst2 %>";
+            document.getElementById("sceneText").innerHTML="<%= fightBanditsRuinsFirst %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/rA821oK.jpg";
+            gameState = "fightBanditsRuinsFirst";
+            score-=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You lose! Your final score is " + score)
+            var outcome = "Lose"
+      }  
+        
+         //Path 1-1-2-1-2(Win)
+         else if(optNum === 'opt2' && gameState === "exploreruins") {
+            //FIGHTBANDITSRUINS1
+            document.getElementById("prompt1").innerHTML="<%= escapeTreasure1 %>";
+            document.getElementById("prompt2").innerHTML="<%= escapeTreasure2 %>";
+            document.getElementById("sceneText").innerHTML="<%= escapeTreasure %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/yc3yxQU.jpg";
+            gameState = "escapeTreasure";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You win! Your final score is " + score)
+            var outcome = "Win"
+      }  
+
+         //Path 1-1-2-2-1(Lose)
+         else if(optNum === 'opt2' && gameState === "reasonbandits") {
+            //RETURNTAVERN
+            document.getElementById("prompt1").innerHTML="<%= returnTavern1 %>";
+            document.getElementById("prompt2").innerHTML="<%= returnTavern2 %>";
+            document.getElementById("sceneText").innerHTML="<%= returnTavern %>";
+            document.getElementById("gameImage").src="https://www.oxpal.com/wp-content/uploads/2014/07/character_medieval_tavern_keeper_big.jpg";
+            gameState = "returnTavern";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+      }  
+         else if(optNum === 'opt1' && gameState === "returnTavern") {
+            //TALKMAN
+            document.getElementById("prompt1").innerHTML="<%= talkMan1 %>";
+            document.getElementById("prompt2").innerHTML="<%= talkMan2 %>";
+            document.getElementById("sceneText").innerHTML="<%= talkMan %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/ystbZTO.jpg";
+            gameState = "talkMan";
+            score-=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You lose! Your final score is " + score)
+            var outcome = "Lose"
+      }  
+         //Path 1-1-2-2-2(Win)
+         else if(optNum === 'opt2' && gameState === "returnTavern") {
+            //TALKWOMAN
+            document.getElementById("prompt1").innerHTML="<%= talkWoman1 %>";
+            document.getElementById("prompt2").innerHTML="<%= talkWoman2 %>";
+            document.getElementById("sceneText").innerHTML="<%= talkWoman %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/XYuD4sV.jpg";
+            gameState = "talkWoman";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You win! Your final score is " + score)
+            var outcome = "Win"
+      }  
+
+         //Path 1-2-1-1-1(Win)
+         else if(optNum === 'opt2' && gameState === "askbar") {
+            //DISCUSSBAR
+            document.getElementById("prompt1").innerHTML="<%= discussBar1 %>";
+            document.getElementById("prompt2").innerHTML="<%= discussBar2 %>";
+            document.getElementById("sceneText").innerHTML="<%= discussBar %>";
+            document.getElementById("gameImage").src="https://www.oxpal.com/wp-content/uploads/2014/07/character_medieval_tavern_keeper_big.jpg";
+            gameState = "discussBar";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+      }  
+         else if(optNum === 'opt1' && gameState === "discussBar") {
+            //IGNOREWARNING
+            document.getElementById("prompt1").innerHTML="<%= ignoreWarning1 %>";
+            document.getElementById("prompt2").innerHTML="<%= ignoreWarning2 %>";
+            document.getElementById("sceneText").innerHTML="<%= ignoreWarning %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/mnJ0sza.jpg";
+            gameState = "ignoreWarning";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+      }  
+         else if(optNum === 'opt1' && gameState === "ignoreWarning") {
+            //BUYMAP
+            document.getElementById("prompt1").innerHTML="<%= buyMap1 %>";
+            document.getElementById("prompt2").innerHTML="<%= buyMap2 %>";
+            document.getElementById("sceneText").innerHTML="<%= buyMap %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/rA821oK.jpg";
+            gameState = "buyMap";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+      }  
+         else if(optNum === 'opt1' && gameState === "buyMap") {
+            //REASONBANDITSRUINS
+            document.getElementById("prompt1").innerHTML="<%= reasonBanditsRuins1 %>";
+            document.getElementById("prompt2").innerHTML="<%= reasonBanditsRuins2 %>";
+            document.getElementById("sceneText").innerHTML="<%= reasonBanditsRuins %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/ZRvRbRP.jpg";
+            gameState = "reasonBanditsRuins";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You win! Your final score is " + score)
+            var outcome = "Win"
+      }  
+
+         //Path 1-2-1-1-2(Lose)
+         else if(optNum === 'opt2' && gameState === "buyMap") {
+            //FIGHTBANDITSRUINSSECOND
+            document.getElementById("prompt1").innerHTML="<%= fightBanditsRuinsSecond1 %>";
+            document.getElementById("prompt2").innerHTML="<%= fightBanditsRuinsSecond2 %>";
+            document.getElementById("sceneText").innerHTML="<%= fightBanditsRuinsSecond %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/QavZWO6.jpg";
+            gameState = "fightBanditsRuinsSecond";
+            score-=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You lose! Your final score is " + score)
+            var outcome = "Lose"
+      }  
+
+         //Path 1-2-1-2-1(Win)
+         else if(optNum === 'opt2' && gameState === "ignoreWarning") {
+            //DECLINESHADYFIGURE
+            document.getElementById("prompt1").innerHTML="<%= declineShadyFigure1 %>";
+            document.getElementById("prompt2").innerHTML="<%= declineShadyFigure2 %>";
+            document.getElementById("sceneText").innerHTML="<%= declineShadyFigure %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/a1ePWDR.jpg";
+            gameState = "declineShadyFigure";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+      }  
+         else if(optNum === 'opt1' && gameState === "declineShadyFigure") {
+            //SPLITTREASURE
+            document.getElementById("prompt1").innerHTML="<%= splitTreasure1 %>";
+            document.getElementById("prompt2").innerHTML="<%= splitTreasure2 %>";
+            document.getElementById("sceneText").innerHTML="<%= splitTreasure %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/a1ePWDR.jpg";
+            gameState = "splitTreasure";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You win! Your final score is " + score)
+            var outcome = "Win"
+      }  
+
+         //Path 1-2-1-2-2(Loss)
+         else if(optNum === 'opt2' && gameState === "declineShadyFigure") {
+            //DECLINESHADYFIGURE
+            document.getElementById("prompt1").innerHTML="<%= keepTreasure1 %>";
+            document.getElementById("prompt2").innerHTML="<%= keepTreasure2 %>";
+            document.getElementById("sceneText").innerHTML="<%= keepTreasure %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/xIiK8Yk.jpg";
+            gameState = "keepTreasure";
+            score-=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You lose! Your final score is " + score)
+            var outcome = "Lose"
+      }  
+
+         //Path 1-2-2-1-1(Loss)
+         else if(optNum === 'opt2' && gameState === "discussBar") {
+            //TALKADVENTURERS
+            document.getElementById("prompt1").innerHTML="<%= talkAdventurers1 %>";
+            document.getElementById("prompt2").innerHTML="<%= talkAdventurers2 %>";
+            document.getElementById("sceneText").innerHTML="<%= talkAdventurers %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/4LtB2WF.jpg";
+            gameState = "talkAdventurers";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;   
+      }  
+         else if(optNum === 'opt1' && gameState === "talkAdventurers") {
+            //LEADGROUP
+            document.getElementById("prompt1").innerHTML="<%= leadGroup1 %>";
+            document.getElementById("prompt2").innerHTML="<%= leadGroup2 %>";
+            document.getElementById("sceneText").innerHTML="<%= leadGroup %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/svuqWKL.jpg";
+            gameState = "leadGroup";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+      }  
+         else if(optNum === 'opt1' && gameState === "leadGroup") {
+            //SNEAKGUARDS
+            document.getElementById("prompt1").innerHTML="<%= sneakGuards1 %>";
+            document.getElementById("prompt2").innerHTML="<%= sneakGuards2 %>";
+            document.getElementById("sceneText").innerHTML="<%= sneakGuards %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/HKR5ZPr.jpg";
+            gameState = "sneakGuards";
+            score-=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You lose! Your final score is " + score)
+            var outcome = "Lose"
+      }  
+
+         //Path 1-2-2-1-2(Win)
+         else if(optNum === 'opt2' && gameState === "leadGroup") {
+            //FIGHTGUARDS
+            document.getElementById("prompt1").innerHTML="<%= fightGuards1 %>";
+            document.getElementById("prompt2").innerHTML="<%= fightGuards2 %>";
+            document.getElementById("sceneText").innerHTML="<%= fightGuards %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/UlyaRnV.jpg";
+            gameState = "fightGuards";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You win! Your final score is " + score)
+            var outcome = "Win"  
+      }  
+
+         //Path 1-2-2-2(Loss)
+         else if(optNum === 'opt2' && gameState === "talkAdventurers") {
+            //DECLINEGROUP
+            document.getElementById("prompt1").innerHTML="<%= declineGroup1 %>";
+            document.getElementById("prompt2").innerHTML="<%= declineGroup2 %>";
+            document.getElementById("sceneText").innerHTML="<%= declineGroup %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/Pv5sdcu.jpg";
+            gameState = "declineGroup";
+            score-=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You lose! Your final score is " + score)
+            var outcome = "Lose"
+      }  
+
+         //Path 2-1-1-1(Loss)
+         else if(optNum === 'opt2' && gameState === null) {
+            //GETBELONGINGS
+            document.getElementById("prompt1").innerHTML="<%= getBelongings1 %>";
+            document.getElementById("prompt2").innerHTML="<%= getBelongings2 %>";
+            document.getElementById("sceneText").innerHTML="<%= getBelongings %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/rAipzMP.jpg";
+            gameState = "getBelongings";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+      } 
+         else if(optNum === 'opt1' && gameState === "getBelongings") {
+            //ACCEPTJOB
+            document.getElementById("prompt1").innerHTML="<%= acceptJob1 %>";
+            document.getElementById("prompt2").innerHTML="<%= acceptJob2 %>";
+            document.getElementById("sceneText").innerHTML="<%= acceptJob %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/SYu1r3o.jpg";
+            gameState = "acceptJob";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+      } 
+         else if(optNum === 'opt1' && gameState === "acceptJob") {
+            //ACCOMPANYMERCHANT
+            document.getElementById("prompt1").innerHTML="<%= accompanyMerchant1 %>";
+            document.getElementById("prompt2").innerHTML="<%= accompanyMerchant2 %>";
+            document.getElementById("sceneText").innerHTML="<%= accompanyMerchant %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/9Esk4uo.jpg";
+            gameState = "accompanyMerchant";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+      } 
+         else if(optNum === 'opt1' && gameState === "accompanyMerchant") {
+            //STEALTREASURE
+            document.getElementById("prompt1").innerHTML="<%= stealTreasure1 %>";
+            document.getElementById("prompt2").innerHTML="<%= stealTreasure2 %>";
+            document.getElementById("sceneText").innerHTML="<%= stealTreasure %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/hg65rmT.jpg";
+            gameState = "stealTreasure";
+            score-=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You lose! Your final score is " + score)
+            var outcome = "Lose"
+      } 
+
+         //Path 2-1-1-2-1(Win)
+         else if(optNum === 'opt2' && gameState === "accompanyMerchant") {
+            //CONFRONTMERCHANT
+            document.getElementById("prompt1").innerHTML="<%= confrontMerchant1 %>";
+            document.getElementById("prompt2").innerHTML="<%= confrontMerchant2 %>";
+            document.getElementById("sceneText").innerHTML="<%= confrontMerchant %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/C1XHnL8.jpg";
+            gameState = "confrontMerchant";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+      } 
+         else if(optNum === 'opt1' && gameState === "confrontMerchant") {
+            //HELPMERCHANT
+            document.getElementById("prompt1").innerHTML="<%= helpMerchant1 %>";
+            document.getElementById("prompt2").innerHTML="<%= helpMerchant2 %>";
+            document.getElementById("sceneText").innerHTML="<%= helpMerchant %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/PUV3QEB.jpg";
+            gameState = "helpMerchant";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You win! Your final score is " + score)
+            var outcome = "Win"
+      } 
+
+         //Path 2-1-1-2-2(Loss)
+         else if(optNum === 'opt2' && gameState === "confrontMerchant") {
+            //LEAVEMERCHANT
+            document.getElementById("prompt1").innerHTML="<%= leaveMerchant1 %>";
+            document.getElementById("prompt2").innerHTML="<%= leaveMerchant2 %>";
+            document.getElementById("sceneText").innerHTML="<%= leaveMerchant %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/Pv5sdcu.jpg";
+            gameState = "leaveMerchant";
+            score-=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You lose! Your final score is " + score)
+            var outcome = "Lose"
+      } 
+
+         //Path 2-1-2(Loss)
+         else if(optNum === 'opt2' && gameState === "acceptJob") {
+            //EXPLORETOWN
+            document.getElementById("prompt1").innerHTML="<%= exploreTown1 %>";
+            document.getElementById("prompt2").innerHTML="<%= exploreTown2 %>";
+            document.getElementById("sceneText").innerHTML="<%= exploreTown %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/n5RGrIz.jpg";
+            gameState = "exploreTown";
+            score-=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You lose! Your final score is " + score)
+            var outcome = "Lose"
+      } 
+
+         //Path 2-2-1-1-1(Loss)
+         else if(optNum === 'opt2' && gameState === "getBelongings") {
+            //DECLINEJOB
+            document.getElementById("prompt1").innerHTML="<%= declineJob1 %>";
+            document.getElementById("prompt2").innerHTML="<%= declineJob2 %>";
+            document.getElementById("sceneText").innerHTML="<%= declineJob %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/JDZkk3g.jpg";
+            gameState = "declineJob";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+      } 
+         else if(optNum === 'opt1' && gameState === "declineJob") {
+            //ENTERCAVE
+            document.getElementById("prompt1").innerHTML="<%= enterCave1 %>";
+            document.getElementById("prompt2").innerHTML="<%= enterCave2 %>";
+            document.getElementById("sceneText").innerHTML="<%= enterCave %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/9Ao7BGd.jpg";
+            gameState = "enterCave";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+      } 
+         else if(optNum === 'opt1' && gameState === "enterCave") {
+            //FIRSTPATH
+            document.getElementById("prompt1").innerHTML="<%= firstPath1 %>";
+            document.getElementById("prompt2").innerHTML="<%= firstPath2 %>";
+            document.getElementById("sceneText").innerHTML="<%= firstPath %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/bEhyqLL.jpg";
+            gameState = "firstPath";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+      } 
+         else if(optNum === 'opt1' && gameState === "firstPath") {
+            //FIGHTYETI
+            document.getElementById("prompt1").innerHTML="<%= fightYeti1 %>";
+            document.getElementById("prompt2").innerHTML="<%= fightYeti2 %>";
+            document.getElementById("sceneText").innerHTML="<%= fightYeti %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/29AIz7i.jpg";
+            gameState = "fightYeti";
+            score-=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You lose! Your final score is " + score)
+            var outcome = "Lose"
+      } 
+
+         //Path 2-2-1-1-2(Win)
+         else if(optNum === 'opt2' && gameState === "firstPath") {
+            //SNEAKYETI
+            document.getElementById("prompt1").innerHTML="<%= sneakYeti1 %>";
+            document.getElementById("prompt2").innerHTML="<%= sneakYeti2 %>";
+            document.getElementById("sceneText").innerHTML="<%= sneakYeti %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/d3KOw0l.jpg";
+            gameState = "sneakYeti";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You win! Your final score is " + score)
+            var outcome = "Win"
+      } 
+
+         //Path 2-2-1-2-1(Loss)
+         else if(optNum === 'opt2' && gameState === "enterCave") {
+            //SECONDPATH
+            document.getElementById("prompt1").innerHTML="<%= secondPath1 %>";
+            document.getElementById("prompt2").innerHTML="<%= secondPath2 %>";
+            document.getElementById("sceneText").innerHTML="<%= secondPath %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/kjkHMFI.jpg";
+            gameState = "secondPath";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+      } 
+         else if(optNum === 'opt1' && gameState === "secondPath") {
+            //TAKECHANCE
+            document.getElementById("prompt1").innerHTML="<%= takeChance1 %>";
+            document.getElementById("prompt2").innerHTML="<%= takeChance2 %>";
+            document.getElementById("sceneText").innerHTML="<%= takeChance %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/C5zXURi.jpg";
+            gameState = "takeChance";
+            score-=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You lose! Your final score is " + score)
+            var outcome = "Lose"
+      } 
+
+         //Path 2-2-1-2-2(Win)
+         else if(optNum === 'opt2' && gameState === "secondPath") {
+            //LEAVECAVE
+            document.getElementById("prompt1").innerHTML="<%= leaveCave1 %>";
+            document.getElementById("prompt2").innerHTML="<%= leaveCave2 %>";
+            document.getElementById("sceneText").innerHTML="<%= leaveCave %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/AgfBmCy.jpg";
+            gameState = "leaveCave";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You win! Your final score is " + score)
+            var outcome = "Win"
+      } 
+
+         //Path 2-2-2-1-1(Loss)
+         else if(optNum === 'opt2' && gameState === "declineJob") {
+            //AVOIDCAVE
+            document.getElementById("prompt1").innerHTML="<%= avoidCave1 %>";
+            document.getElementById("prompt2").innerHTML="<%= avoidCave2 %>";
+            document.getElementById("sceneText").innerHTML="<%= avoidCave %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/az0Wr0q.jpg";
+            gameState = "avoidCave";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+      } 
+         else if(optNum === 'opt1' && gameState === "avoidCave") {
+            //HEARBANDITS
+            document.getElementById("prompt1").innerHTML="<%= hearBandits1 %>";
+            document.getElementById("prompt2").innerHTML="<%= hearBandits2 %>";
+            document.getElementById("sceneText").innerHTML="<%= hearBandits %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/az0Wr0q.jpg";
+            gameState = "hearBandits";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+      } 
+         else if(optNum === 'opt1' && gameState === "hearBandits") {
+            //JOINBANDITS
+            document.getElementById("prompt1").innerHTML="<%= joinBandits1 %>";
+            document.getElementById("prompt2").innerHTML="<%= joinBandits2 %>";
+            document.getElementById("sceneText").innerHTML="<%= joinBandits %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/p2mUNXz.jpg";
+            gameState = "joinBandits";
+            score-=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You lose! Your final score is " + score)
+            var outcome = "Lose"
+      } 
+
+         //Path 2-2-2-1-2(Win)
+         else if(optNum === 'opt2' && gameState === "hearBandits") {
+            //CROSSBANDITS
+            document.getElementById("prompt1").innerHTML="<%= crossBandits1 %>";
+            document.getElementById("prompt2").innerHTML="<%= crossBandits2 %>";
+            document.getElementById("sceneText").innerHTML="<%= crossBandits %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/UFacAan.jpg";
+            gameState = "crossBandits";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You win! Your final score is " + score)
+            var outcome = "Win"
+      } 
+
+         //Path 2-2-2-2-1(Win)
+         else if(optNum === 'opt2' && gameState === "avoidCave") {
+            //REFUSEBANDITS
+            document.getElementById("prompt1").innerHTML="<%= refuseBandits1 %>";
+            document.getElementById("prompt2").innerHTML="<%= refuseBandits2 %>";
+            document.getElementById("sceneText").innerHTML="<%= refuseBandits %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/bJcylaK.jpg";
+            gameState = "refuseBandits";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+      } 
+         else if(optNum === 'opt1' && gameState === "refuseBandits") {
+            //FIGHTBANDITSTAVERN
+            document.getElementById("prompt1").innerHTML="<%= fightBanditsTavern1 %>";
+            document.getElementById("prompt2").innerHTML="<%= fightBanditsTavern2 %>";
+            document.getElementById("sceneText").innerHTML="<%= fightBanditsTavern %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/wg95cGL.jpg";
+            gameState = "fightBanditsTavern";
+            score+=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You win! Your final score is " + score)
+            var outcome = "Win"
+      } 
+
+         //Path 2-2-2-2-2(Loss)
+         else if(optNum === 'opt2' && gameState === "refuseBandits") {
+            //RUNBANDITS
+            document.getElementById("prompt1").innerHTML="<%= runBandits1 %>";
+            document.getElementById("prompt2").innerHTML="<%= runBandits2 %>";
+            document.getElementById("sceneText").innerHTML="<%= runBandits %>";
+            document.getElementById("gameImage").src="https://i.imgur.com/vEQguqZ.jpg";
+            gameState = "runBandits";
+            score-=100
+            document.getElementById("score-value").innerHTML = score;
+            alert("You lose! Your final score is " + score)
+            var outcome = "Lose"     
+      } 
+         else {
+            alert('AN ERROR OCCURRED...');
+         }
+
+         include("leaderboard", {score: score, outcome: outcome});
+      }
+            var gameState = null
+      </script>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!---<link rel="stylesheet" type="text/css"   href="/stylesheets/style.css"> stylesheets wont load, need to fix, for now embedded--->
+      <title>FABA The Game</title>
+   </head>
+   <body style="background-image: url(https://i.pinimg.com/originals/d5/60/44/d56044a5b5f62df707da4823ee84b2f4.jpg); align-content: center;" >
+      <img id="gameImage" src="https://www.gamespot.com/a/uploads/original/536/5360430/3060670-the_witcher_3_wild_hunt_blood_and_wine_toussaint_is_full_of_places_just_waiting_to_be_discovered_rgb.jpg" style="display: block; margin-left: auto; margin-right: auto; width: 40%;"></img>
+      <h1 style="text-align: center; border: 3px solid green;">FABA The Game</h1>
+      <h2 style="text-align: center; background-color: lightsteelblue;">Welcome to FABA, <%= user %> </h2>
+      <h3 style="text-align: center; background-color: lightsteelblue;" id="score">Score: <span id="score-value"></span></h3>
+      <h4 style="background-color: lightsteelblue;" name="sceneText" id="sceneText" style="text-align: center;">Prompt: <%= intro %></h4>
+      <div style="text-align: center; background-color: lightsteelblue; height: 40vh;">
+         <button name="prompt1" id="prompt1" style="background-color: blanchedalmond; margin: auto; width: 50%; border: 3px solid green; padding: 20px 0; text-align: center;" onclick="correct('opt1');"><%= intro1 %></button>
+         <button name="prompt2" id="prompt2" style="background-color: blanchedalmond; margin: auto; width: 50%; border: 3px solid green; padding: 20px 0; text-align: center;" onclick="correct('opt2');"><%= intro2 %></button>
+      </div>
+      </div>
+   </body>
+</html>
